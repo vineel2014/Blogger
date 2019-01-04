@@ -9,8 +9,8 @@ class Post(models.Model):
     title=models.CharField(max_length=200)
     text=models.TextField()
     created_date=models.DateTimeField(default=timezone.now)
-    Plubished_date=models.DateTimeField(blank=True, null=True)
-    Owner=models.CharField(max_length=10,default="Sairam")
+    published_date=models.DateTimeField(blank=True, null=True)
+    owner=models.CharField(max_length=10,default="Sairam")
 
     def publish(self):
        self.published_date=timezone.now()

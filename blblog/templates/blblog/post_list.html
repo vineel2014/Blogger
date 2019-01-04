@@ -1,0 +1,38 @@
+{% extends 'blblog/base.html' %}
+
+{% load static %}
+<html>
+    <head>
+        <title>Vineel's Blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blblog.css' %}">
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+ 
+    </head>
+    <body>
+        <div class="page-header">
+            <h1><a href="/">Vineel's Blog</a></h1>
+        </div>
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+            {% block content %}
+            {% for post in posts %}
+                <div class="post">
+                    <div class="date">
+                        <p>published: {{ post.published_date }}</p>
+                    </div>
+                    <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                    <p>Post:{{ post.text|linebreaksbr }}</p>
+                    <p>Owner:{{post.owner|linebreaksbr }}</p>
+                </div>
+            {% endfor %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
